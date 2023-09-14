@@ -1,0 +1,21 @@
+Difference between Distributed and Cluster? What is a cloud computing platform? Distributed application scenarios?
+Ans : Distributed refers to splitting a business into different sub-services and distributing them on different machines. 
+      Clustering means that multiple servers are grouped together to achieve the same service. It can be regarded as a computer, 
+      a cloud computing platform, or through A software system centralizes the use of distributed deployment resources. To cope with large concurrency,
+      to achieve high availability, both distributed and clusters are indispensable
+Distributed, in a narrow sense, is similar to a cluster, but its organization is relatively loose, unlike clusters, which are organized, one server is paralyzed, and other servers can be topped up.
+
+Each node in the distributed network completes different services. When one node is smashed, the service is inaccessible.
+1. Distributed refers to splitting a business into different sub-services and distributing them on different machines.
+2. Cluster refers to a group of servers that are grouped together to achieve the same business and can be considered as one computer.
+Each node that is distributed can be used for clustering. Clusters are not necessarily distributed.
+
+What is a cloud computing platform?
+A cloud computing platform is a centralized distribution of resources for distributed deployment through a software system. To cope with large concurrency, to achieve high availability, both distributed and clusters are indispensable.
+For example, load balancing, if it is just a server, this machine will be finished.
+The difficulty of distribution is that many machines do different jobs with dependencies. The resources and time required for these jobs may be very different. Some machines may also strike. How can we coordinate and achieve the highest efficiency and consumption? At least, no mistakes.
+
+Credits Goes to : Mina Ayoub
+Reference From : 
+https://medium.com/@mena.meseha/difference-between-distributed-and-cluster-aca9d50c2c44#:~:text=Clustering%20means%20that%20multiple%20servers,use%20of%20distributed%20deployment%20resources.
+Thank You Mina.
