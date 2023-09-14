@@ -5,4 +5,12 @@ Ans : Amazon EMR (previously called Amazon Elastic MapReduce) is a managed clust
 Ans : Cluster computing is a collection of tightly or loosely connected computers that work together so that they act as a single entity. 
       The connected computers execute operations all together thus creating the idea of a single system. The clusters are generally connected through 
       fast local area networks (LANs)
-3)
+3)What is an example of a cluster system?
+Ans : For example: A web based cluster may assign different web queries to different nodes so that the system performance is optimized. 
+      Some clustered systems use a round robin mechanism to assign requests to different nodes in the system. These clusters improve the availability of
+      the clustered system
+4)What are the 3 types of cluster system?
+Ans : There are mainly three types of the clustered operating system:
+       i)Asymmetric Clustering System.
+       ii)Symmetric Clustering System.
+       iii)Parallel Cluster System.
