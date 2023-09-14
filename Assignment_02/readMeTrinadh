@@ -1,3 +1,8 @@
 1)what is elastic mapreduce in aws ? 
 Ans : Amazon EMR (previously called Amazon Elastic MapReduce) is a managed cluster platform that simplifies running big data frameworks,
       such as Apache Hadoop and Apache Spark , on AWS to process and analyze vast amounts of data.
+2)what is cluster platform?
+Ans : Cluster computing is a collection of tightly or loosely connected computers that work together so that they act as a single entity. 
+      The connected computers execute operations all together thus creating the idea of a single system. The clusters are generally connected through 
+      fast local area networks (LANs)
+3)
