@@ -1,0 +1,25 @@
+//below program is for counting the words starts with letter a to n and other letters
+
+from mrjob.job import MRJob
+import re
+
+WORD_RE = re.compile(r"[\w']+")
+
+class MRCategorizedWordCount(MRJob):
+
+    def mapper(self, _, line):
+        for word in WORD_RE.findall(line):
+            # Check the first character of the word to categorize it
+            if 'a' <= word[0].lower() <= 'n':
+                yield "a_to_n", 1
+            else:
+                yield "other", 1
+
+    def combiner(self, word, counts):
+        yield word, sum(counts)
+
+    def reducer(self, word, counts):
+        yield word, sum(counts)
+
+if __name__ == '__main__':
+    MRCategorizedWordCount.run()

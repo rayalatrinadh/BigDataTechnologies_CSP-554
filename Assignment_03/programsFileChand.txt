@@ -1,0 +1,84 @@
+from mrjob.job import MRJob
+
+class MRSalaries(MRJob):
+
+    def mapper(self, _, line):
+        (name,jobTitle,agencyID,agency,hireDate,annualSalary,grossPay) = line.split('\t')
+        yield jobTitle, 1
+
+    def combiner(self, jobTitle, counts):
+        yield jobTitle, sum(counts)
+
+    def reducer(self, jobTitle, counts):
+        yield jobTitle, sum(counts)
+
+
+if __name__ == '__main__':
+    MRSalaries.run()
+
+
+
+//2nd program
+
+from mrjob.job import MRJob
+
+class MRSalaries2(MRJob):
+
+    def mapper(self, _, line):
+        (name, jobTitle, agencyID, agency, hireDate, annualSalary, grossPay) = line.split('\t')
+        
+        # Convert the annualSalary string to float
+        salary = float(annualSalary.replace(",", "").replace("$", ""))
+        
+        # Categorize the salary range
+        if salary >= 100000:
+            yield "High", 1
+        elif 50000 <= salary < 100000:
+            yield "Medium", 1
+        else:
+            yield "Low", 1
+
+    def combiner(self, salary_range, counts):
+        yield salary_range, sum(counts)
+
+    def reducer(self, salary_range, counts):
+        yield salary_range, sum(counts)
+
+
+if __name__ == '__main__':
+    MRSalaries2.run()
+
+
+//3rd program
+
+data = """
+1,31,2.5,1260759144
+1,1029,3.0,1260759179
+1,1061,3.0,1260759182
+1,1129,2.0,1260759185
+3,50068,4.5,1298862467
+3,58559,3.0,1298922071
+3,84236,4.0,1298922130
+4,10,4.0,949810645
+4,34,5.0,949919556
+4,112,5.0,949810582
+"""
+
+# Dictionary to hold user reviews
+user_reviews = {}
+
+# Splitting data into lines
+lines = data.strip().split("\n")
+
+# Processing each line
+for line in lines:
+    userId, movieId, _, _ = line.split(",")
+    
+    # Adding movies to set of reviewed movies for a user
+    if userId not in user_reviews:
+        user_reviews[userId] = set()
+    user_reviews[userId].add(movieId)
+
+# Outputting results
+for userId, movies in user_reviews.items():
+    print(f"{userId}: {len(movies)}")
