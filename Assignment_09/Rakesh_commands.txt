@@ -1,0 +1,207 @@
+*************************************************************  CASSSANDRA  ************************************************************************
+
+ssh -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem hadoop@ec2-18-222-204-65.us-east-2.compute.amazonaws.com
+
+scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/init.cql hadoop@ec2-18-222-204-65.us-east-2.compute.amazonaws.com:/home/hadoop
+
+	----->  wget https://archive.apache.org/dist/cassandra/3.11.2/apache-cassandra-3.11.2-bin.tar.gz
+	
+	----->  tar	-xzvf apache-cassandra-3.11.2-bin.tar.gz
+	
+	
+  Then	enter	this	command	to	start	Cassandra	(lots	of	diagnostic	messages	will	appear):
+
+		----> apache-cassandra-3.11.2/bin/cassandra	&
+		
+		
+		
+_***___ In Second terminal (Cqlash_Term)___***_***__
+
+	  Enter	the	following	into	this	terminal	to	start	the	command	line	interface	csqlsh:
+	  
+		-----> apache-cassandra-3.11.2/bin/cqlsh
+		
+		
+_***___ IN third Terminal (Edit-Term)___***_***__
+		
+	scp the init.cql to EMR Master Node (/home/hadoop)
+	
+	---> source	‘/init.cql’;
+	
+	---> describe keyspaces;
+	
+	d.)
+	----> USE A20526148;
+	
+	
+	CREATE TABLE Music (
+    artistName text,
+    albumName text,
+    numberSold int,
+    Cost int,
+    PRIMARY KEY (artistName, albumName)
+	);
+
+	scp ex2.cql into the /home/hadoop
+	
+	scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex2.cql hadoop@ec2-18-222-204-65.us-east-2.compute.amazonaws.com:/home/hadoop
+	
+  -----> source 'ex2.cql';
+ 
+  -----> DESCRIBE TABLE Music;
+  
+  
+    *****************  EXERCISE-3  *************************
+
+--> INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Mozart', 'Greatest Hits', 100000, 10);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Taylor Swift', 'Fearless', 2300000, 15);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Black Sabbath', 'Paranoid', 534000, 12);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Katy Perry', 'Prism', 800000, 16);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Katy Perry', 'Teenage Dream', 750000, 14);
+	
+	scp ex3.cql into the /home/hadoop
+	
+	scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex3.cql hadoop@ec2-18-222-204-65.us-east-2.compute.amazonaws.com:/home/hadoop
+	
+	   source 'ex3.cql';
+	
+ ----> SELECT * FROM Music;
+
+
+
+   *******************  EXERCISE-4  ***********************
+   
+  //  SELECT * FROM Music WHERE artistName = 'Katy Perry';
+  
+  SCP ex4.cql into the /home/hadoop
+  
+  scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex4.cql hadoop@ec2-18-222-204-65.us-east-2.compute.amazonaws.com:/home/hadoop
+  
+  source 'ex4.cql';
+  
+  
+  *******************  EXERCISE-5  ************************
+  
+  // SELECT * FROM Music WHERE numberSold >= 700000 ALLOW FILTERING;
+
+  
+  SCP ex5.sql into the /home/hadoop
+  
+  scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex5.cql hadoop@ec2-18-222-204-65.us-east-2.compute.amazonaws.com:/home/hadoop
+  
+  source 'ex5.cql';
+  
+  
+  
+  
+*******************************************************************  MongoDB  *******************************************************************************
+
+*******************************************************************  MongoDB  *******************************************************************************
+
+
+trinadh
+ec2-3-23-85-191.us-east-2.compute.amazonaws.com
+
+ssh -i /D/2023/000_fall_2023Sem2/BigData_CSP-554/Assignment/emr-key-pair05.pem hadoop@ec2-3-23-85-191.us-east-2.compute.amazonaws.com
+
+
+scp -i /D/2023/000_fall_2023Sem2/BigData_CSP-554/Assignment/emr-key-pair05.pem /D/2023/000_fall_2023Sem2/BigData_CSP-554/Assignment/09/mongoex.tar hadoop@ec2-3-23-85-191.us-east-2.compute.amazonaws.com:/home/hadoop
+
+
+ssh -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem hadoop@ec2-3-17-160-198.us-east-2.compute.amazonaws.com
+
+
+scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/awskeypair.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\SEM-Fall/Big\ Data/Assignments/Assignment-9/mongoex.tar hadoop@ec2-44-199-202-180.compute-1.amazonaws.com:/home/hadoop
+
+scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/mongoex.tar hadoop@ec2-3-17-160-198.us-east-2.compute.amazonaws.com:/home/hadoop
+
+
+*** In the Init-Term
+
+	--> sudo cp mongodb-org-4.2.repo /etc/yum.repos.d
+	
+*** Then	enter	this	into Init-Term to	unzip	mongoex.tar:
+
+	--> tar	-xvf mongoex.tar
+	
+	
+*** STEP D -  Install	and	start	MongoDB
+
+	// --> sudo yum install -y mongodb-org-4.2.15 mongodb-org-server-4.2.15 mongodb-org-shell-4.2.15	mongodb-org-mongos-4.2.15 mongodb-org-tools-4.2.15
+	
+	--> sudo yum install -y mongodb-org-4.2.15 mongodb-org-server-4.2.15 mongodb-org-shell-4.2.15 mongodb-org-mongos-4.2.15 mongodb-org-tools-4.2.15
+
+
+
+*** Now	enter this into Init-Term	to start mongodb:
+
+	--> sudo systemctl start mongod
+	
+
+*** Open a second terminal ( CLI-Term )
+
+	--> mongo
+
+*** Step F	– Edit mongo query language	files
+
+	--> 
+
+*** Open a second terminal ( CLI-Term )
+
+
+*** Step G	–Setting up	the	assignment database
+
+	in second termianl 
+		--> use assignment
+		
+		--> load('./load.js');
+		
+		--> db.unicorns.find();
+		
+		--> load('./demo1.js');
+		
+		
+******************  EXERCISE-1  **************************
+
+--> db.unicorns.find({ weight: { $lt: 500 } });
+
+
+******************  EXERCISE-2  **************************
+
+--> db.unicorns.find({ foods: "apple" });
+
+  db.unicorns.find({ loves: "apple" });
+
+
+
+******************  EXERCISE-3  **************************
+
+db.unicorns.insert({
+  name: "Malini",
+  dob: new Date("2008-03-11T00:00:00Z"),
+  loves: ["pears", "grapes"],
+  weight: 450,
+  gender: "F",
+  vampires: 23,
+  horns: 1
+});
+
+--> db.unicorns.find({ name: "Malini" });
+
+
+
+******************  EXERCISE-4  **************************
+
+db.unicorns.update(
+  { name: "Malini" },
+  { $push: { loves: "apricots" } }
+);
+
+--> db.unicorns.find({ name: "Malini" }, { loves: 1, _id: 0 });
+
+
+
+******************  EXERCISE-5  **************************
+
+const result = db.unicorns.deleteMany({ weight: { $gt: 600 } });
+printjson(result);

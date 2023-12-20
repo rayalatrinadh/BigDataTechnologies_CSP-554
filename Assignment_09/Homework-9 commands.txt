@@ -1,0 +1,140 @@
+
+***************************************  HBase  ***********************************************************
+
+ssh -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/emr-key-pair05.pem hadoop@ec2-3-136-11-38.us-east-2.compute.amazonaws.com
+
+EXERCISE-1: -
+
+	create 'csp554Tbl', 'cf1', 'cf2'
+
+	describe 'csp554Tbl'
+	
+
+EXERCISE-2: -
+
+	put 'csp554Tbl', 'Row1', 'cf1:name', 'Sam'
+	put 'csp554Tbl', 'Row2', 'cf1:name', 'Ahmed'
+	put 'csp554Tbl', 'Row1', 'cf2:job', 'Pilot'
+	put 'csp554Tbl', 'Row2', 'cf2:job', 'Doctor'
+	put 'csp554Tbl', 'Row1', 'cf2:level', 'LZ3'
+	put 'csp554Tbl', 'Row2', 'cf2:level', 'AR7'
+	
+	
+	scan 'csp554Tbl'
+
+
+EXERCISE-3: -
+
+	get 'csp554Tbl', 'Row1', 'cf2:level'
+
+
+EXERCISE-4: -
+	
+	get 'csp554Tbl', 'Row2', 'cf1:name'
+
+
+EXERCISE-5: -
+
+	scan 'csp554Tbl', {LIMIT => 2}
+
+
+
+
+*************************************************************  CASSSANDRA  ************************************************************************
+
+ssh -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/awskeypair.pem hadoop@ec2-44-200-220-127.compute-1.amazonaws.com
+
+scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/awskeypair.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/init.cql hadoop@ec2-44-200-220-127.compute-1.amazonaws.com:/home/hadoop
+
+	----->  wget https://archive.apache.org/dist/cassandra/3.11.2/apache-cassandra-3.11.2-bin.tar.gz
+	
+	----->  tar	-xzvf apache-cassandra-3.11.2-bin.tar.gz
+	
+	
+  Then	enter	this	command	to	start	Cassandra	(lots	of	diagnostic	messages	will	appear):
+
+		----> apache-cassandra-3.11.2/bin/cassandra	&
+		
+		
+		
+_***___ In Second terminal (Cqlash_Term)___***_***__
+
+	  Enter	the	following	into	this	terminal	to	start	the	command	line	interface	csqlsh:
+	  
+		-----> apache-cassandra-3.11.2/bin/cqlsh
+		
+		
+_***___ IN third Terminal (Edit-Term)___***_***__
+		
+	scp the init.cql to EMR Master Node (/home/hadoop)
+	
+	---> source	‘/init.cql’;
+	
+	---> describe keyspaces;
+	
+	d.)
+	----> USE A20526148;
+	
+	
+	CREATE TABLE Music (
+    artistName text,
+    albumName text,
+    numberSold int,
+    Cost int,
+    PRIMARY KEY (artistName, albumName)
+	);
+
+	scp ex2.cql into the /home/hadoop
+	
+	scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/awskeypair.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex2.cql hadoop@ec2-44-200-220-127.compute-1.amazonaws.com:/home/hadoop
+	
+  -----> source 'ex2.cql';
+ 
+  -----> DESCRIBE TABLE Music;
+  
+  
+    *****************  EXERCISE-3  *************************
+
+--> INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Mozart', 'Greatest Hits', 100000, 10);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Taylor Swift', 'Fearless', 2300000, 15);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Black Sabbath', 'Paranoid', 534000, 12);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Katy Perry', 'Prism', 800000, 16);
+	INSERT INTO Music (artistName, albumName, numberSold, cost) VALUES ('Katy Perry', 'Teenage Dream', 750000, 14);
+	
+	scp ex3.cql into the /home/hadoop
+	
+	scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/awskeypair.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex3.cql hadoop@ec2-44-200-220-127.compute-1.amazonaws.com:/home/hadoop
+	
+	   source 'ex3.cql';
+	
+ ----> SELECT * FROM Music;
+
+
+
+   *******************  EXERCISE-4  ***********************
+   
+  //  SELECT * FROM Music WHERE artistName = 'Katy Perry';
+  
+  SCP ex4.cql into the /home/hadoop
+  
+  scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/awskeypair.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex4.cql hadoop@ec2-44-200-220-127.compute-1.amazonaws.com:/home/hadoop
+  
+  source 'ex4.cql';
+  
+  
+  *******************  EXERCISE-5  ************************
+  
+  // SELECT * FROM Music WHERE numberSold >= 700000 ALLOW FILTERING;
+
+  
+  SCP ex5.sql into the /home/hadoop
+  
+  scp -i /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-2/awskeypair.pem /C/Users/purna/OneDrive/Documents/IIT/2nd\ SEM-Fall/Big\ Data/Assignments/Assignment-9/ex5.cql hadoop@ec2-44-200-220-127.compute-1.amazonaws.com:/home/hadoop
+  
+  source 'ex5.cql';
+
+
+
+
+
+*******************************************************************  MongoDB  *******************************************************************************

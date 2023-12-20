@@ -1,0 +1,1 @@
+CREATE KEYSPACE A20528281 WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
